@@ -1,0 +1,220 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.calculator-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.calculator-container h1 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Calculator main container */
+.calculator {
+    background: #222;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 350px;
+    margin: 0 auto 30px;
+}
+
+/* Display screen */
+.display {
+    margin-bottom: 20px;
+}
+
+.display input {
+    width: 100%;
+    height: 80px;
+    background: #000;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 2rem;
+    text-align: right;
+    padding: 0 20px;
+    font-family: 'Courier New', monospace;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Buttons container */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+/* Button base styles */
+.btn {
+    height: 60px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Number buttons */
+.btn.number {
+    background: linear-gradient(145deg, #f0f0f0, #d0d0d0);
+    color: #333;
+}
+
+.btn.number:hover {
+    background: linear-gradient(145deg, #e0e0e0, #c0c0c0);
+}
+
+/* Operator buttons */
+.btn.operator {
+    background: linear-gradient(145deg, #ff9500, #ff8000);
+    color: white;
+}
+
+.btn.operator:hover {
+    background: linear-gradient(145deg, #ff8000, #ff7000);
+}
+
+/* Clear button */
+.btn.clear {
+    background: linear-gradient(145deg, #ff4757, #ff3742);
+    color: white;
+}
+
+.btn.clear:hover {
+    background: linear-gradient(145deg, #ff3742, #ff2837);
+}
+
+/* Equals button */
+.btn.equals {
+    background: linear-gradient(145deg, #2ed573, #1eb562);
+    color: white;
+    grid-row: span 2;
+}
+
+.btn.equals:hover {
+    background: linear-gradient(145deg, #1eb562, #0ea551);
+}
+
+/* Small equals button for mobile layout */
+.btn.equals-small {
+    background: linear-gradient(145deg, #2ed573, #1eb562);
+    color: white;
+}
+
+.btn.equals-small:hover {
+    background: linear-gradient(145deg, #1eb562, #0ea551);
+}
+
+/* Zero button spans 2 columns */
+.btn.zero {
+    grid-column: span 2;
+}
+
+/* Instructions section */
+.instructions {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.instructions h3 {
+    color: white;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.instructions ul {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+}
+
+.instructions li {
+    margin-bottom: 8px;
+}
+
+/* Signature */
+.signature {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+.signature p {
+    margin-bottom: 5px;
+}
+
+.signature strong {
+    color: white;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .calculator-container {
+        padding: 20px;
+    }
+    
+    .calculator {
+        padding: 15px;
+    }
+    
+    .display input {
+        height: 70px;
+        font-size: 1.5rem;
+    }
+    
+    .btn {
+        height: 50px;
+        font-size: 1rem;
+    }
+    
+    .buttons {
+        gap: 10px;
+    }
+}
+
+/* Animation for button press */
+@keyframes buttonPress {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+.btn:active {
+    animation: buttonPress 0.1s ease;
+}

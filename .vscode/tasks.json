@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start Frontend Development Server",
+			"type": "shell",
+			"command": "cd 01-frontend-foundations/project-1-landing-page && python3 -m http.server 8000",
+			"group": "build",
+			"isBackground": true,
+			"args": [],
+			"problemMatcher": []
+		}
+	]
+}

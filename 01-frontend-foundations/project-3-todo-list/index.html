@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App by ChainSmoke Developer</title>
+    <link rel="stylesheet" href="todo.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1><i class="fas fa-tasks"></i> Todo List App</h1>
+            <p>Stay organized and get things done! 🚀</p>
+        </header>
+
+        <div class="todo-container">
+            <!-- Add Task Section -->
+            <div class="add-task-section">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="taskInput" 
+                        placeholder="What needs to be done?" 
+                        maxlength="100"
+                    >
+                    <button id="addBtn" onclick="addTask()">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                </div>
+                <div class="task-counter">
+                    <span id="taskCount">0 tasks remaining</span>
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-btn active" onclick="filterTasks('all')">
+                    <i class="fas fa-list"></i> All
+                </button>
+                <button class="filter-btn" onclick="filterTasks('active')">
+                    <i class="fas fa-clock"></i> Active
+                </button>
+                <button class="filter-btn" onclick="filterTasks('completed')">
+                    <i class="fas fa-check"></i> Completed
+                </button>
+            </div>
+
+            <!-- Todo List -->
+            <div class="todo-list-container">
+                <ul id="todoList" class="todo-list">
+                    <!-- Tasks will be added here dynamically -->
+                </ul>
+                
+                <!-- Empty State -->
+                <div id="emptyState" class="empty-state">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>No tasks yet!</h3>
+                    <p>Add a task above to get started 📝</p>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="actions-section">
+                <button id="clearCompleted" onclick="clearCompleted()" class="action-btn danger">
+                    <i class="fas fa-trash"></i> Clear Completed
+                </button>
+                <button id="clearAll" onclick="clearAll()" class="action-btn danger">
+                    <i class="fas fa-times-circle"></i> Clear All
+                </button>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stat-card">
+                <i class="fas fa-tasks"></i>
+                <div class="stat-info">
+                    <span class="stat-number" id="totalTasks">0</span>
+                    <span class="stat-label">Total Tasks</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-check-circle"></i>
+                <div class="stat-info">
+                    <span class="stat-number" id="completedTasks">0</span>
+                    <span class="stat-label">Completed</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-clock"></i>
+                <div class="stat-info">
+                    <span class="stat-number" id="activeTasks">0</span>
+                    <span class="stat-label">Active</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips Section -->
+        <div class="tips-section">
+            <h3><i class="fas fa-lightbulb"></i> Pro Tips:</h3>
+            <ul>
+                <li><strong>Enter key:</strong> Add task quickly</li>
+                <li><strong>Double-click:</strong> Edit existing tasks</li>
+                <li><strong>Drag & Drop:</strong> Reorder your tasks (coming soon!)</li>
+                <li><strong>Auto-save:</strong> Your tasks are saved automatically</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>Made with ❤️ by <strong>ChainSmoke Developer</strong></p>
+            <p>Learning JavaScript - Project #2 | Data persisted in LocalStorage</p>
+        </footer>
+    </div>
+
+    <script src="todo.js"></script>
+</body>
+</html>
