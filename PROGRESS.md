@@ -94,7 +94,7 @@ Total Progress: 6.25% (2/32 weeks)
 
 #### ✅ Project 1: React Calculator  
 **Completed:** July 9, 2025  
-**Repository:** `02-modern-frontend/react-calculator/`  
+**Repository:** [GitHub Link](https://github.com/Hk4-dev1/Developer-Learning-Workspace/tree/main/02-modern-frontend/react-calculator)  
 **Live Demo:** http://localhost:3000
 
 ##### 🎯 Learning Achievements:
@@ -125,7 +125,7 @@ Total Progress: 6.25% (2/32 weeks)
 
 #### ✅ Project 2: E-commerce Product Catalog  
 **Completed:** July 10, 2025  
-**Repository:** `02-modern-frontend/ecommerce-catalog/`  
+**Repository:** [GitHub Link](https://github.com/Hk4-dev1/Developer-Learning-Workspace/tree/main/02-modern-frontend/ecommerce-catalog)  
 **Live Demo:** http://localhost:3001
 
 ##### 🎯 Advanced Learning Achievements:
@@ -189,8 +189,8 @@ Total Progress: 6.25% (2/32 weeks)
 ### Completed Projects
 | Project | Tech Stack | Completion Date | Demo Link | GitHub | Notes |
 |---------|------------|-----------------|-----------|--------|-------|
-| React Calculator | React + TypeScript + CSS | July 9, 2025 | http://localhost:3000 | `/02-modern-frontend/react-calculator/` | First React project with modern UI |
-| E-commerce Catalog | React + TypeScript + Context API + Custom Hooks | July 10, 2025 | http://localhost:3001 | `/02-modern-frontend/ecommerce-catalog/` | Advanced state management & modern UI |
+| React Calculator | React + TypeScript + CSS | July 9, 2025 | http://localhost:3000 | [GitHub](https://github.com/Hk4-dev1/Developer-Learning-Workspace/tree/main/02-modern-frontend/react-calculator) | First React project with modern UI |
+| E-commerce Catalog | React + TypeScript + Context API + Custom Hooks | July 10, 2025 | http://localhost:3001 | [GitHub](https://github.com/Hk4-dev1/Developer-Learning-Workspace/tree/main/02-modern-frontend/ecommerce-catalog) | Advanced state management & modern UI |
 
 ### Current Project
 **Project:** React Testing & Advanced Patterns  
