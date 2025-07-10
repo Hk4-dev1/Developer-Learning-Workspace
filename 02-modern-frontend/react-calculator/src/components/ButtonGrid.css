@@ -1,0 +1,18 @@
+/* ButtonGrid.css - Button layout grid */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+/* Special styling for zero button (spans 2 columns) */
+.button-grid .zero {
+  grid-column: span 2;
+}
+
+@media (max-width: 480px) {
+  .button-grid {
+    gap: 8px;
+  }
+}

@@ -1,0 +1,67 @@
+/* Display.css - Calculator display styles */
+.display {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.display::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
+  pointer-events: none;
+}
+
+.display-history {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: right;
+  min-height: 20px;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+}
+
+.display-current {
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: white;
+  text-align: right;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 480px) {
+  .display {
+    padding: 15px;
+    min-height: 70px;
+  }
+  
+  .display-current {
+    font-size: 1.8rem;
+  }
+  
+  .display-history {
+    font-size: 0.8rem;
+  }
+}
+
+/* Animation for value changes */
+.display-current {
+  transition: all 0.2s ease-in-out;
+}
+
+.display-current:hover {
+  transform: scale(1.02);
+}

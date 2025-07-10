@@ -1,0 +1,250 @@
+/* RecentSearches.css - Search history and trending searches */
+
+.recent-searches {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-top: 0.5rem;
+  animation: slideDown 0.2s ease-out;
+}
+
+.search-section {
+  margin-bottom: 1rem;
+}
+
+.search-section:last-child {
+  margin-bottom: 0;
+}
+
+.search-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.search-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #6b7280;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.clear-all-btn {
+  background: none;
+  border: none;
+  color: #667eea;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.clear-all-btn:hover {
+  background: #f3f4f6;
+  color: #5a67d8;
+}
+
+.search-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Recent Search Items */
+.search-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-item-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  color: #374151;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.search-item-btn:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+  color: #1f2937;
+}
+
+.search-item-btn svg {
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.remove-search-btn {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.remove-search-btn:hover {
+  background: #fef2f2;
+  border-color: #fca5a5;
+  color: #ef4444;
+}
+
+/* Trending Items */
+.trending-item {
+  padding: 0.5rem 0.75rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.trending-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.trending-item:hover::before {
+  left: 100%;
+}
+
+.trending-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .recent-searches {
+    padding: 0.75rem;
+    margin-top: 0.25rem;
+  }
+
+  .search-section-title {
+    font-size: 0.8125rem;
+  }
+
+  .search-item-btn,
+  .trending-item {
+    padding: 0.625rem;
+    font-size: 0.8125rem;
+  }
+
+  .clear-all-btn {
+    font-size: 0.6875rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .recent-searches {
+    background: #1f2937;
+    border-color: #374151;
+  }
+
+  .search-section-title {
+    color: #d1d5db;
+  }
+
+  .clear-all-btn {
+    color: #667eea;
+  }
+
+  .clear-all-btn:hover {
+    background: #374151;
+    color: #5a67d8;
+  }
+
+  .search-item-btn {
+    background: #374151;
+    border-color: #4b5563;
+    color: #f3f4f6;
+  }
+
+  .search-item-btn:hover {
+    background: #4b5563;
+    border-color: #6b7280;
+    color: #f9fafb;
+  }
+
+  .remove-search-btn {
+    background: #374151;
+    border-color: #4b5563;
+    color: #d1d5db;
+  }
+
+  .remove-search-btn:hover {
+    background: #451a03;
+    border-color: #fca5a5;
+    color: #ef4444;
+  }
+}
+
+/* Focus accessibility */
+.clear-all-btn:focus,
+.search-item-btn:focus,
+.remove-search-btn:focus,
+.trending-item:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .recent-searches {
+    border: 2px solid #000000;
+  }
+
+  .search-item-btn,
+  .remove-search-btn,
+  .trending-item {
+    border: 2px solid #000000;
+  }
+}

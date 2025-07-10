@@ -1,0 +1,151 @@
+/* Button.css - Individual button styles */
+.calculator-button {
+  height: 60px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Button hover effect */
+.calculator-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.calculator-button:hover::before {
+  opacity: 1;
+}
+
+.calculator-button:active {
+  transform: scale(0.95);
+}
+
+/* Number buttons */
+.calculator-button.number {
+  background: rgba(255, 255, 255, 0.9);
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.calculator-button.number:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Operation buttons */
+.calculator-button.operation {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+  color: white;
+  font-weight: 600;
+}
+
+.calculator-button.operation:hover {
+  background: linear-gradient(135deg, #ff5252, #e91e63);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+}
+
+/* Equals button */
+.calculator-button.equals {
+  background: linear-gradient(135deg, #4ecdc4, #45b7b8);
+  color: white;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+.calculator-button.equals:hover {
+  background: linear-gradient(135deg, #26de81, #20bf6b);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(78, 205, 196, 0.4);
+}
+
+/* Clear button */
+.calculator-button.clear {
+  background: linear-gradient(135deg, #ffa726, #ff7043);
+  color: white;
+  font-weight: 600;
+}
+
+.calculator-button.clear:hover {
+  background: linear-gradient(135deg, #ff9800, #ff5722);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 167, 38, 0.4);
+}
+
+/* Function buttons (disabled for now) */
+.calculator-button.function {
+  background: rgba(255, 255, 255, 0.6);
+  color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.calculator-button.function:disabled {
+  opacity: 0.5;
+}
+
+/* Zero button (wider) */
+.calculator-button.zero {
+  text-align: left;
+  padding-left: 24px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .calculator-button {
+    height: 50px;
+    font-size: 1.1rem;
+  }
+  
+  .calculator-button.zero {
+    padding-left: 20px;
+  }
+  
+  .calculator-button.equals {
+    font-size: 1.2rem;
+  }
+}
+
+/* Focus states for accessibility */
+.calculator-button:focus {
+  outline: 2px solid #4ecdc4;
+  outline-offset: 2px;
+}
+
+/* Ripple effect on click */
+.calculator-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.calculator-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.calculator-button:active::after {
+  width: 200px;
+  height: 200px;
+}
