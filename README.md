@@ -1,6 +1,19 @@
-# 🚀 Developer Learning Roadmap
+# 🚀 Developer Learning Roadmap - Full-Stack E-Commerce Project
 
-Welcome to your comprehensive full-stack developer learning journey! This workspace is designed to take you from beginner to job-ready developer with hands-on projects and structured curriculum.
+A comprehensive learning journey from frontend foundations to full-stack development, culminating in a complete e-commerce application with React and Django.
+
+[![Status](https://img.shields.io/badge/Status-50%25%20Complete-green)](https://github.com/yourusername/developer-learning-roadmap)
+[![Phase](https://img.shields.io/badge/Current%20Phase-Full%20Stack%20Integration-blue)](./PROGRESS.md)
+[![Tech Stack](https://img.shields.io/badge/Tech%20Stack-React%20%2B%20Django%20%2B%20TypeScript-orange)](./04-fullstack-projects/)
+
+## 🎯 Project Overview
+
+This repository documents a complete learning journey through modern web development, featuring:
+
+- **Frontend Development**: React, TypeScript, Modern CSS
+- **Backend Development**: Django, REST APIs, Database Design  
+- **Full-Stack Integration**: Complete e-commerce application
+- **Professional Practices**: Testing, Documentation, Git workflow
 
 ## 📋 **Learning Path Overview**
 
