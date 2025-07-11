@@ -1,18 +1,26 @@
+// Simple Product Card that uses SimpleCart
 import React from 'react';
 import { Heart, ShoppingCart, Star, Eye, ArrowRight } from 'lucide-react';
-import { Product, ViewMode } from '../../types/Product';
-import { useApp } from '../../context/AppContext';
-import { formatCurrency } from '../../utils/helpers';
-import './ProductCard.css';
+import { Product, ViewMode } from '../types/Product';
+import { useSimpleCartContext } from '../context/SimpleCartContext';
+import { formatCurrency } from '../utils/helpers';
+import './ProductCard/ProductCard.css';
 
-interface ProductCardProps {
+interface SimpleProductCardProps {
   product: Product;
   viewMode: ViewMode;
   onQuickView?: (product: Product) => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode, onQuickView }) => {
-  const { actions, isInWishlist, isInCart, getCartItemCount } = useApp();
+const SimpleProductCard: React.FC<SimpleProductCardProps> = ({ product, viewMode, onQuickView }) => {
+  const { 
+    addToCart, 
+    addToWishlist, 
+    removeFromWishlist, 
+    isInWishlist, 
+    isInCart, 
+    getCartItemCount 
+  } = useSimpleCartContext();
 
   const isWishlisted = isInWishlist(product.id);
   const isInCartAlready = isInCart(product.id);
@@ -20,23 +28,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode, onQuickVie
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
-    console.log('🛒 Add to Cart clicked for product:', product.name);
-    console.log('🛒 Product data:', product);
-    console.log('🛒 Actions object:', actions);
-    actions.addToCart(product, 1);
-    console.log('🛒 Add to cart action dispatched');
+    addToCart(product, 1);
   };
 
   const handleToggleWishlist = (e: React.MouseEvent) => {
     e.stopPropagation();
-    console.log('❤️ Wishlist toggle clicked for product:', product.name);
-    console.log('❤️ Current wishlist status:', isWishlisted);
     if (isWishlisted) {
-      actions.removeFromWishlist(product.id);
-      console.log('❤️ Removed from wishlist');
+      removeFromWishlist(product.id);
     } else {
-      actions.addToWishlist(product);
-      console.log('❤️ Added to wishlist');
+      addToWishlist(product);
     }
   };
 
@@ -116,36 +116,34 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode, onQuickVie
           </div>
 
           <div className="product-tags">
-            {product.tags.slice(0, 3).map((tag, index) => (
-              <span key={index} className="tag">{tag}</span>
+            {product.tags.slice(0, 3).map((tag: string) => (
+              <span key={tag} className="tag">{tag}</span>
             ))}
           </div>
 
-          <div className="product-pricing">
-            <div className="price-container">
-              <span className="current-price">{formatCurrency(product.price)}</span>
-              {product.originalPrice && (
-                <span className="original-price">{formatCurrency(product.originalPrice)}</span>
-              )}
-            </div>
-            
-            <div className="product-actions-list">
-              {isInCartAlready ? (
-                <div className="in-cart-indicator">
-                  <ShoppingCart size={16} />
-                  <span>In Cart ({cartQuantity})</span>
-                </div>
-              ) : (
-                <button
-                  className="add-to-cart-btn"
-                  onClick={handleAddToCart}
-                  disabled={!product.inStock}
-                >
-                  <ShoppingCart size={16} />
-                  Add to Cart
-                </button>
-              )}
-            </div>
+          <div className="product-price">
+            <span className="current-price">{formatCurrency(product.price)}</span>
+            {product.originalPrice && (
+              <span className="original-price">{formatCurrency(product.originalPrice)}</span>
+            )}
+          </div>
+          
+          <div className="product-actions-list">
+            {isInCartAlready ? (
+              <div className="in-cart-indicator">
+                <ShoppingCart size={16} />
+                <span>In Cart ({cartQuantity})</span>
+              </div>
+            ) : (
+              <button
+                className="add-to-cart-btn"
+                onClick={handleAddToCart}
+                disabled={!product.inStock}
+              >
+                <ShoppingCart size={16} />
+                Add to Cart
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -170,20 +168,21 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode, onQuickVie
             <span>Out of Stock</span>
           </div>
         )}
-        <div className="product-actions product-actions--grid">
+        
+        <div className="product-actions">
           <button
             className={`action-btn wishlist-btn ${isWishlisted ? 'active' : ''}`}
             onClick={handleToggleWishlist}
             title={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
           >
-            <Heart size={16} />
+            <Heart size={18} />
           </button>
           <button
             className="action-btn quick-view-btn"
             onClick={handleQuickView}
             title="Quick view"
           >
-            <Eye size={16} />
+            <Eye size={18} />
           </button>
         </div>
         
@@ -207,7 +206,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode, onQuickVie
         </div>
       </div>
 
-      <div className="product-info product-info--grid">
+      <div className="product-info">
         <div className="product-meta">
           <span className="product-category">{product.category}</span>
           <span className="product-brand">{product.brand}</span>
@@ -219,11 +218,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode, onQuickVie
           <div className="stars">
             {renderStars(product.rating)}
           </div>
-          <span className="rating-text">{product.rating.toFixed(1)}</span>
-          <span className="review-count">({product.reviewCount})</span>
+          <span className="rating-text">({product.reviewCount})</span>
         </div>
 
-        <div className="product-pricing">
+        <div className="product-price">
           <span className="current-price">{formatCurrency(product.price)}</span>
           {product.originalPrice && (
             <span className="original-price">{formatCurrency(product.originalPrice)}</span>
@@ -253,4 +251,4 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode, onQuickVie
   );
 };
 
-export default ProductCard;
+export default SimpleProductCard;

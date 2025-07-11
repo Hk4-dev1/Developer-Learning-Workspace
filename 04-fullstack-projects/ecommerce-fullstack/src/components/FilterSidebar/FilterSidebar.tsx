@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Filter, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { ProductFilters, PriceRange } from '../../types/Product';
-import { useApp } from '../../context/AppContext';
 import { useProductContext } from '../../context/ProductProvider';
 import './FilterSidebar.css';
 

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Product, ViewMode } from '../../types/Product';
 import { useApp } from '../../context/AppContext';
-import ProductCard from '../ProductCard/ProductCard';
+import SimpleProductCard from '../SimpleProductCard';
 import ProductQuickView from '../ProductQuickView/ProductQuickView';
 import LoadingSkeleton from '../LoadingSkeleton/LoadingSkeleton';
-import { Loader, AlertCircle, Filter, SortAsc } from 'lucide-react';
+import { AlertCircle, Filter, SortAsc } from 'lucide-react';
 import './ProductList.css';
 
 interface ProductListProps {
@@ -18,6 +18,10 @@ const ProductList: React.FC<ProductListProps> = ({ products, isLoading, error })
   const { viewMode, searchState } = state;
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
 
+  // Force show products if we have them, regardless of loading state
+  const shouldShowProducts = products && products.length > 0;
+  const actuallyLoading = isLoading || searchState.isLoading;
+
   const handleQuickView = (product: Product) => {
     setQuickViewProduct(product);
   };
@@ -26,8 +30,8 @@ const ProductList: React.FC<ProductListProps> = ({ products, isLoading, error })
     setQuickViewProduct(null);
   };
 
-  // Loading state
-  if (isLoading) {
+  // Loading state - only show if actually loading AND no products
+  if (actuallyLoading && !shouldShowProducts) {
     return (
       <div className="product-list-container">
         <div className={`product-grid ${viewMode === ViewMode.LIST ? 'list-view' : 'grid-view'}`}>
@@ -125,7 +129,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, isLoading, error })
       {/* Product grid/list */}
       <div className={`product-list ${viewMode === ViewMode.GRID ? 'product-grid' : 'product-list-view'}`}>
         {products.map((product, index) => (
-          <ProductCard
+          <SimpleProductCard
             key={product.id}
             product={product}
             viewMode={viewMode}

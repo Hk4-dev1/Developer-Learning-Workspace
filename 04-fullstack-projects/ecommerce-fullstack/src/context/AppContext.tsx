@@ -88,24 +88,18 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       const savedCart = localStorage.getItem(CART_STORAGE_KEY);
       if (savedCart) {
         const cartData = JSON.parse(savedCart);
-        // Restore cart items
-        cartData.items.forEach((item: any) => {
-          dispatch(actionCreators.addToCart(
-            item.product,
-            item.quantity,
-            item.selectedSize,
-            item.selectedColor
-          ));
-        });
+        if (cartData && cartData.items && cartData.items.length > 0) {
+          dispatch(actionCreators.restoreCart(cartData));
+        }
       }
 
       // Load wishlist from localStorage
       const savedWishlist = localStorage.getItem(WISHLIST_STORAGE_KEY);
       if (savedWishlist) {
         const wishlistData = JSON.parse(savedWishlist);
-        wishlistData.forEach((item: any) => {
-          dispatch(actionCreators.addToWishlist(item.product));
-        });
+        if (wishlistData && wishlistData.length > 0) {
+          dispatch(actionCreators.restoreWishlist(wishlistData));
+        }
       }
 
       // Load user preferences

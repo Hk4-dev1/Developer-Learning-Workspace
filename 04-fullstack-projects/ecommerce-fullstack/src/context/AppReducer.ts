@@ -61,6 +61,8 @@ const calculateCartTotals = (items: CartItem[], discount = 0, shippingCost = 0):
 
 // Cart reducer function
 export const cartReducer = (state: Cart, action: CartAction): Cart => {
+  console.log('🛒 Cart reducer received action:', action.type, action.payload);
+  
   switch (action.type) {
     case CartActionType.ADD_ITEM: {
       const { product, quantity = 1, selectedSize, selectedColor } = action.payload;
@@ -141,6 +143,8 @@ export const cartReducer = (state: Cart, action: CartAction): Cart => {
 
 // Main app reducer
 export const appReducer = (state: AppState, action: any): AppState => {
+  console.log('🔄 Reducer received action:', action.type, action.payload);
+  
   switch (action.type) {
     case 'SET_LOADING':
       return {
@@ -297,6 +301,19 @@ export const appReducer = (state: AppState, action: any): AppState => {
         cart: cartReducer(state.cart, action)
       };
 
+    // Restore actions for localStorage
+    case 'RESTORE_CART':
+      return {
+        ...state,
+        cart: action.payload
+      };
+
+    case 'RESTORE_WISHLIST':
+      return {
+        ...state,
+        wishlist: action.payload
+      };
+
     default:
       return state;
   }
@@ -408,5 +425,16 @@ export const actionCreators = {
   updateShipping: (shippingCost: number) => ({
     type: CartActionType.UPDATE_SHIPPING,
     payload: { shippingCost }
+  }),
+
+  // Restore state actions for localStorage
+  restoreCart: (cart: Cart) => ({
+    type: 'RESTORE_CART',
+    payload: cart
+  }),
+
+  restoreWishlist: (wishlist: any[]) => ({
+    type: 'RESTORE_WISHLIST',
+    payload: wishlist
   })
 };
